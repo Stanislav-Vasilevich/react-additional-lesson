@@ -136,10 +136,9 @@ function App() {
   ]);
 
   function removeTask(taskId: string, todolistId: number) {
-    setTodo(todo.map((el, index) => index === todolistId ? {
-      ...el,
-      tasks: [...el.tasks.filter(fl => fl.taskId !== taskId)]
-    } : el))
+    setTodo(todo.map((el, index) => index === todolistId
+      ? {...el, tasks: [...el.tasks.filter(fl => fl.taskId !== taskId)]}
+      : el))
   }
 
   function addTask(title: string, todolistId: number) {
@@ -148,10 +147,9 @@ function App() {
   }
 
   function changeStatus(taskId: string, isDone: boolean, todolistId: number) {
-    setTodo(todo.map((el, index) => index === todolistId ? {
-      ...el,
-      tasks: el.tasks.map(m => m.taskId === taskId ? {...m, isDone: isDone} : m)
-    } : el))
+    setTodo(todo.map((el, index) => index === todolistId
+      ? {...el, tasks: el.tasks.map(m => m.taskId === taskId ? {...m, isDone: isDone} : m)}
+      : el))
   }
 
   function changeFilter(value: FilterValuesType, todolistId: number) {
@@ -163,7 +161,7 @@ function App() {
   }
 
   const removeAllTodolists = () => {
-    //todo: САМОСТОЯТЕЛЬНО
+    setTodo([]);
   }
 
   const removeAllTasksInOneTodo = (todolistId: number) => {
@@ -176,7 +174,7 @@ function App() {
   return (
     <div className="App">
       <div>
-
+        <button onClick={removeAllTodolists}>X</button>
       </div>
 
       {
@@ -203,7 +201,7 @@ function App() {
             changeTaskStatus={changeStatus}
             filter={tl.filter}
             removeTodolist={removeTodolist}
-
+            removeAllTasksInOneTodo={removeAllTasksInOneTodo}
           />
         })
       }
