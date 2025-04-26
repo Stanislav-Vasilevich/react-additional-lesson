@@ -1,0 +1,23 @@
+.blue {
+  background: blue;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.red {
+  background: red;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.red:hover {
+  background: #cd0000;
+}
+
+.blue:hover {
+  background: #0202c6;
+}

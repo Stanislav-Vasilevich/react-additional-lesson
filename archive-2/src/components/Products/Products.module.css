@@ -1,0 +1,29 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: circle;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #0059b3;
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 0 0 10px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.img {
+  width: 150px;
+}
