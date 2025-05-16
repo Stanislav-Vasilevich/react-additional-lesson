@@ -78,7 +78,7 @@ function App() {
           </SuperButton3>
         </Box>
 
-        <Box title="Отображение кнопок с помощью children и открытие модальных окон по клику" text="">
+        <Box title="Кнопка №4" text="Отображение кнопок с помощью children и открытие модальных окон по клику">
           <Products products={sneakers} openModal={openModal}/>
         </Box>
 
