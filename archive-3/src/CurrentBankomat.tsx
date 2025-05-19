@@ -2,50 +2,25 @@ import {MoneyType} from './App';
 import styled from 'styled-components';
 import {FC} from 'react';
 
-type CurrentBankomatPropsType = {
-  money: MoneyType[]
+type Props = {
+  money: MoneyType
 }
 
-export const CurrentBankomat: FC<CurrentBankomatPropsType> = ({money}) => {
-  // с деструктуризацией пожалуйста
+export const CurrentBankomat: FC<Props> = ({money}) => {
   return (
-    <div>
-      {
-        money.map(m => {
-          return (
-            <Banknote key={m.id} color={m.nominal === 'USD' ? 'aquamarine' : 'lightskyblue'}>
-              <Name>{m.banknote}</Name>
-              <Nominal>{m.nominal}</Nominal>
-            </Banknote>
-          )
-        })
-      }
-    </div>
+    <Banknote key={money.id} color={money.banknote}>
+      <Name>{money.banknote}</Name>
+      <Nominal>{money.nominal}</Nominal>
+    </Banknote>
   );
 };
 
-
-const BanknoteGreen = styled.div`
-  background-color: aquamarine;
-  width: 400px;
-  height: 200px;
-  margin: 10px;
-`
-
-const BanknoteBlue = styled.div`
-  background-color: lightskyblue;
-  width: 400px;
-  height: 200px;
-  margin: 10px;
-`
-
 const Banknote = styled.div`
-  // background-color: ...
+  background-color: ${props => props.color === 'USD' ? 'aquamarine' : 'lightskyblue'};
   width: 200px;
   height: 100px;
   margin: 5px;
 `
-
 
 const Name = styled.span`
   display: flex;

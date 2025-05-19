@@ -11,7 +11,7 @@ export const City: FC<CityPropsType> = ({data}) => {
   const mappedMoney = data.map((el: MoneyType) => (
     <CurrentBankomat
       key={el.id}
-      money={data}
+      money={el}
     />
   ))
 

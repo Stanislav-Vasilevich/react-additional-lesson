@@ -31,30 +31,31 @@ export const moneyFilter = (money: MoneyType[], filter: BanknotsType): MoneyType
   return money
 }
 
-
 export const App = () => {
   const [money, setMoney] = useState<MoneyType[]>(defaultMoney)
   const [filterValue, setFilterValue] = useState<BanknotsType>('ALL')
 
   const filteredMoney = moneyFilter(money, filterValue)
 
-  const addMoney = (banknote: BanknotsType) => {
-    // Добавление денег сделаем в последнюю очередь, после настройки фильтров и отрисовки денег
+  const addMoney = (value: BanknotsType) => {
+    const newBanknot = {banknote: value, nominal: 100, id: v1()}
+    setMoney(prev => ([...prev, newBanknot]))
   }
 
   const removeMoney = (banknote: BanknotsType) => {
-    // Снятие денег сделаем в последнюю очередь, после настройки фильтров и отрисовки денег
-    // const index = money.findIndex
-    //  if (index !== -1) {
-    //      setMoney(money.filter((el, i) => ...));
-    //  }
+    const currentMoney = money.find(m => m.banknote === banknote)
+    if (currentMoney) {
+      setMoney(money.filter((el) => el !== currentMoney));
+    }
   }
 
   return (
     <div className="App">
       <Country
-        data={filteredMoney} // отрисовать будем деньги после фильтрации
-        setFilterValue={setFilterValue}  // useState передаем? Так можно было?!
+        data={filteredMoney}
+        setFilterValue={setFilterValue}
+        addMoney={addMoney}
+        removeMoney={removeMoney}
       />
     </div>
   );
